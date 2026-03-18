@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 rtx4070-m4
+Copyright (c) 2024 IoMT Security Research Group
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,30 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+-------------------------------------------------------------------------------
+
+DISCLAIMER FOR HEALTHCARE DEPLOYMENTS:
+
+This software is provided as a reference implementation and educational
+resource for Zero Trust Architecture in IoMT environments. It is NOT a
+certified medical device or medical software product. It has not been
+evaluated, reviewed, or approved by the U.S. Food and Drug Administration
+(FDA), the European Medicines Agency (EMA), or any other regulatory body.
+
+Organizations implementing this architecture in production healthcare
+environments are responsible for:
+
+1. Conducting their own security assessment and risk analysis
+2. Ensuring compliance with applicable regulations (HIPAA, GDPR, etc.)
+3. Validating that the implementation meets their clinical and operational
+   requirements
+4. Obtaining any required regulatory approvals for their specific deployment
+
+The authors make no warranties regarding the fitness of this software for
+use in clinical environments and accept no liability for patient harm,
+data breaches, or regulatory violations arising from its use.
+
+For production healthcare deployments, engage qualified healthcare
+cybersecurity professionals and ensure compliance with your organization's
+security policies and applicable regulatory requirements.

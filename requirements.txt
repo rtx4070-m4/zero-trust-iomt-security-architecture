@@ -1,0 +1,64 @@
+# =============================================================================
+# Zero Trust IoMT — Python Dependencies
+# =============================================================================
+# Python 3.11+ required
+# Install: pip install -r requirements.txt
+#
+# Pinned to minor versions for reproducibility.
+# Run `pip-audit` or `safety check` to verify no known CVEs.
+# =============================================================================
+
+# ── Core API Framework ────────────────────────────────────────────────────────
+fastapi>=0.110.0,<0.115.0          # ZTA API Gateway framework
+uvicorn[standard]>=0.27.0,<0.30.0  # ASGI server (includes websockets + extras)
+pydantic>=2.6.0,<3.0.0             # Request/response validation
+pydantic-settings>=2.2.0,<3.0.0    # Settings management from env vars
+
+# ── HTTP Client (for inter-service communication and health checks) ───────────
+httpx>=0.27.0,<0.28.0              # Async HTTP client (used in gateway tests)
+requests>=2.31.0,<3.0.0            # Sync HTTP client (simulation scripts)
+
+# ── Authentication & Security ─────────────────────────────────────────────────
+python-jose[cryptography]>=3.3.0,<4.0.0  # JWT encode/decode (RS256, HS256)
+cryptography>=42.0.0,<44.0.0             # X.509 cert parsing, TLS utilities
+passlib[bcrypt]>=1.7.4,<2.0.0            # Password hashing utilities
+python-multipart>=0.0.9,<0.1.0           # Form data parsing (FastAPI OAuth2)
+
+# ── Data Processing & Monitoring ──────────────────────────────────────────────
+# Standard library `statistics` module used for anomaly detection (no extra dep)
+# Standard library `json`, `logging`, `datetime` used for logger.py
+
+# ── Optional: Enhanced Statistics / ML (for future AI trust scoring) ──────────
+# Uncomment to enable ML-based anomaly detection (adds ~150MB to image):
+# numpy>=1.26.0,<2.0.0
+# scikit-learn>=1.4.0,<2.0.0
+# pandas>=2.2.0,<3.0.0
+
+# ── Development & Testing ─────────────────────────────────────────────────────
+# Install separately: pip install -r requirements-dev.txt
+# pytest>=8.0.0
+# pytest-asyncio>=0.23.0
+# httpx>=0.27.0  (already above — also used for TestClient)
+# pytest-cov>=4.1.0
+# mypy>=1.8.0
+# ruff>=0.3.0    (linter + formatter)
+# bandit>=1.7.7  (security linting)
+# pip-audit>=2.7.0  (dependency CVE scanning)
+# safety>=3.1.0
+
+# ── Container / CI Utilities ─────────────────────────────────────────────────
+# (Not installed in production container — for local dev only)
+# docker>=7.0.0
+# python-dotenv>=1.0.0
+
+# =============================================================================
+# Version pinning rationale:
+#   - fastapi: pinned to 0.11x for Pydantic v2 compatibility
+#   - cryptography: 42.x+ for CVE-2023-49083 fix
+#   - python-jose: 3.3.x — note: consider PyJWT as alternative for fewer deps
+#
+# Security notes:
+#   - python-jose has known issues with algorithm confusion; ensure JWT
+#     validation enforces alg=RS256 explicitly (see api/gateway.py)
+#   - Run `pip-audit -r requirements.txt` before each deployment
+# =============================================================================
